@@ -9,8 +9,8 @@ tmin=0.0; % time limits
 tmax=100.0;
 xmin=-4; % space limits
 xmax=4;  
-c1=0.5; % material 1 velocity
-c2=0.25; % material 2 velocity 
+c1=0.2; % material 1 velocity
+c2=1.0; % material 2 velocity 
 rsq1=(c1*dt/dx).^2; %  the equation coefficient - there is a name of the guy that invented that
 rsq2=(c2*dt/dx).^2;
 damping=1e-15; % artificial damping - reduce displacement that much per velocity 
@@ -28,17 +28,20 @@ u=zeros(nt,nx);
 %     u(2,idxA)=u(1,idxA);
 % end
 wavelet_width = 0.5;
-wavelet_location = -3;
+wavelet_location = -2.0;
 u(1,:)=exp(-(((x-wavelet_location)/wavelet_width).^2)/0.25); % gaussian wavelet,
 
 %u(1,:)=0;
 u(1,abs(u(1,:))<0.01)=0;  % truncate the wavelet
 u(2,:)=u(1,:);            % starting condition: t(1)==t(2), so like, melt from frozen.
 %% prepare display
-figure(1);
+hFig = figure(1);
+hFig.ToolBar = 'none'; hFig.NumberTitle = 'off'; hFig.Name = 'Wave equation demo'
+
 hp=plot(x,real(u(1,:)));
+hTitle = title('starting...')
 material_break_location = 2;
-hBreak = line([0 0]+material_break_location,[-1 1],'color','red');
+hBreakVisualisation = line([0 0]+material_break_location,[-1 1],'color','red');
 set(gca,'YLim',[-1 1])
 
 %%  do dynamics
@@ -58,5 +61,8 @@ for idxT = 2:(nt-1)
         
         u(idxT+1,idxA)=2*(1-rsq)*u(idxT,idxA)-u(idxT-1,idxA)+rsq*(u(idxT,idxA-1)+u(idxT,idxA+1))-dmpVal; % the wave equation for itxT+1
     end
-    hp.YData=real(u(idxT+1,:)); drawnow;
+    % update visualizer
+    hp.YData=real(u(idxT+1,:)); 
+    hTitle.String = sprintf('time step %d',idxT);
+    drawnow;
 end
