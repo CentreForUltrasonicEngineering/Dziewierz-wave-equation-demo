@@ -1,6 +1,6 @@
 # Demonstration of a discrete wave equation in Matlab
 
-![screenshot1](T:\git\wave_eq_try1\screenshot1.png)
+![screenshot](screenshot1.png)
 
 
 
