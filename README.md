@@ -10,7 +10,7 @@ All time-domain frames are saved to a 2D matrix for further analysis. Hence, thi
 
 In this version, there is two materials: material 1 to the left of the red line, and material 2 to the right of the red line. 
 
-This script could be easily modified to support arbitrary material, arbitrary meshing e.t.c - but it is not the point of this work. Here I do not want to replicate what PZFlex does - rather, obtain a basic understanding of what PZFlex does.
+This script could be easily modified to support arbitrary material, arbitrary meshing e.t.c - but it is not the point of this work. Here I do not want to replicate what PZFlex does - rather, obtain a basic feel of what PZFlex does and what are the consequences of crossing the Courant limits.
 
 ====
 
