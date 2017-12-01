@@ -12,6 +12,10 @@ In this version, there is two materials: material 1 to the left of the red line,
 
 This script could be easily modified to support arbitrary material, arbitrary meshing e.t.c - but it is not the point of this work. Here I do not want to replicate what PZFlex does - rather, obtain a basic feel of what PZFlex does and what are the consequences of crossing the Courant limits.
 
+For more info on the Courant number see here:
+
+![https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition]
+
 ====
 
 Have a play with the initial conditions - in particular, see what happens when you increase dt or dx, or reduce the width of the initial wavelet too far. (spoiler: nothing good).
