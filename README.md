@@ -12,9 +12,6 @@ In this version, there is two materials: material 1 to the left of the red line,
 
 This script could be easily modified to support arbitrary material, arbitrary meshing e.t.c - but it is not the point of this work. Here I do not want to replicate what PZFlex does - rather, obtain a basic feel of what PZFlex does and what are the consequences of crossing the Courant limits.
 
-For more info on the Courant number see here:
-
-![https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition]
 
 ====
 
@@ -25,6 +22,19 @@ Note the effect of the material change: a reflection occurs.
 Have fun! 
 
 p.s. i guess there would be a point in making the per-element material version of this to demonstrate how different material impedance matching schemes work. I'll do that later on.
+
+==== Worth knowing about:
+
+Courant number / CFL condition:
+![https://en.wikipedia.org/wiki/Courant%E2%80%93Friedrichs%E2%80%93Lewy_condition]
+Summary: There exist a very well defined hard limit on what the largest time step and spatial step can be in an FE model. However, just being close to that limit can still produce simulation artifacts quickly.
+
+
+Floating point numbers:
+https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
+Summary: Floating point numbers are not exact; combining numbers of significantly different magnitude can produce very big errors. Effect for us: both too big and too small timestep/discretisation of the model is bad. In particular, the operation of substraction (needed to calculate a derivative) is particularly risky. Division is even worse, but fortunatelly, often times it can be avoided.
+
+
 
 ====
 
